@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from departments.api.router import router_department
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,4 +14,5 @@ urlpatterns = [
         name="swagger-ui",
     ),
      path('api/', include('users.api.router')),
+     path('api/',include(router_department.urls)),
 ]
