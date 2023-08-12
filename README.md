@@ -67,3 +67,9 @@ En el apartado this form se puede cambiar la contraseña.
 Para borrar el contenedor y lo relacionado use el comando.
 
 ### `docker compose down -v`
+
+Tambien se añadio swagger para que pueda ver los endpoints generados en el proyecto y pueda probarlos desde ahi. Se encuentra en la ruta: 
+
+### `http://127.0.0.1:8000/docs/`
+
+para porbar los post, patch, put debera pasar el token de acceso en el authorized.
