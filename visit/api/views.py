@@ -15,10 +15,13 @@ class VisitApiView(ModelViewSet):
     queryset=Visit.objects.all()
     
     def create(self, request, *args, **kwargs):
+        print("hol")
+        print(request.data)
         try:
-            if Department.objects.get(num_department=request.data["department"]).exists():
+            print(request.data["department"])
+            if Department.objects.filter(num_department=request.data["department"]).exists():
                 department=Department.objects.get(num_department=request.data["department"])
-                visit=Visit(
+                visit=Visit(    
                     is_active=True,
                     token=random.randint(6, 999999),
                     department=department,
@@ -54,17 +57,20 @@ class VisitApiView(ModelViewSet):
     
     @action(
         detail=False,
-        methods=["patch"],
-        url_path=r'validate'
+        methods=["post"],
+        url_path=r'validate',
     )
     def validateToken(self,request):
+        print(request)
+        print(request.data)
         token=request.data["token"]
         if Visit.objects.filter(token=token).exists():
+            visit=Visit.objects.get(token=token)
             Visit.objects.filter(token=token).update(
                 token='', is_active=False, entry_date=datetime.now()
             )
             return Response(
-                {"sucsses":"Puede pasar"},
+                {"success":"Puede pasar","department":visit.department.num_department},
                 status=status.HTTP_202_ACCEPTED
             )
         else:
