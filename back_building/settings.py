@@ -104,7 +104,7 @@ DATABASES = {
         "USER": "usr_edificio",
         "PASSWORD": "sasa",
         "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "PORT": "5433",
     }
 }
 
