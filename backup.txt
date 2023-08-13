@@ -8,5 +8,10 @@ values ('vigilante 1','victor','martinez',true,'b@gmail.com','',false,false,2,no
 insert into users_user (username,first_name,last_name,is_active,email,password,is_superuser,is_staff,role,date_joined) 
 values ('inquilino 2','diego','camacho',true,'a@gmail.com','',false,false,1,now());
 
+insert into tenant_tenant (info_user_id) values (1);
+insert into tenant_tenant (info_user_id) values (3);
+insert into vigilant_vigilant (info_user_id) values (2);
+
+
 insert into departments_department (floor,tenant_id) values (1,1);
-insert into departments_department (floor,tenant_id) values (2,3);
+insert into departments_department (floor,tenant_id) values (2,2);

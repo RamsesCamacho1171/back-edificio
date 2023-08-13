@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 from departments.models import Department
-from users.api.serializer import UserSerilizer
+from tenant.api.serializer import TenantSerializer
 
 class DepartmentSerializer(ModelSerializer):
-    tenant=UserSerilizer(read_only=True)
+    tenant=TenantSerializer(read_only=True)
     class Meta:
         model=Department
         fields="__all__"

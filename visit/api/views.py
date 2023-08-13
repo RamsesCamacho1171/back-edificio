@@ -47,7 +47,6 @@ class VisitApiView(ModelViewSet):
     )
     def getVisitByDepartment(self,request,num_department=None):
         visits=Visit.objects.filter(department=num_department)
-        token=random.randint(6, 999999)
         active_visit=[]
         for visit in visits:
             if(visit.is_active==True):

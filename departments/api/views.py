@@ -14,11 +14,10 @@ class DepartmentApiView(ModelViewSet):
     @action(
         detail=False,
         methods=["get"],
-        url_path=r'inquilino/(?P<usuarioId>\w+)'
+        url_path=r'tenant/(?P<tenantId>\w+)'
     )
-    def getDepartmentByUser(self,request,usuarioId=None):
-        #un usuario puede tener varios departamentos, pero para el ejemplo solo tendra 1
-        departments=Department.objects.get(tenant=usuarioId)
+    def getDepartmentByUser(self,request,tenantId=None):
+        departments=Department.objects.get(tenant=tenantId)
         serializer=DepartmentSerializer(departments)
         return Response(serializer.data, status=status.HTTP_200_OK)
     

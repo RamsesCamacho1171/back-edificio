@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import User
+from tenant.models import Tenant
 
 # Create your models here.
 class Department(models.Model):
@@ -18,7 +18,7 @@ class Department(models.Model):
     floor = models.PositiveSmallIntegerField(choices=ROL_CHOICES)
     #se pone aqui la relacion porque un inquilino puede llegar a poseer uno o mas departamentos
     tenant=models.ForeignKey(
-        User,
+        Tenant,
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
